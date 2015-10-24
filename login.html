@@ -6,19 +6,51 @@
 <body>
 <p>Login Page</p>
 
-<label>Username: </label><input type = "text" id = "username" />
+
+<form name="myForm" method="POST" >    
+Username : <input type="text" id="userName"/>
 <br>
-<label>Password: </label><input type = "text" id = "username" />
+Password : <input type="password" id="password"/>
 <br>
-<input type = "button" id = "loginBtn" value = "login"/>
-</body>	
+<input type="button" value="Login" id='login' onclick="check()"/>
+
+<div id='username_availability_result'></div>
+</form>
 
 <script>
 $(document).ready(function(){
-	var loginBtn = $("#loginBtn");
+	var loginBtn = $("#login");
 
-	$.
+	loginBtn.click(function(){
+		if($("#userName").val().length == 0){
+			$("#username_availability_result").html("Please enter a valid user name.");
+		}
+		else{
+			$('#username_availability_result').html("");
+			check_availability();  
+		}
+	});
 });
+
+function check_availability(){  
+  
+        //get the username  
+        var username = $('#userName').val();  
+  
+        //use ajax to run the check  
+        $.post("checkLogin.php", { username: username },  
+            function(result){  
+                //if the result is 1  
+                if(result == 1){  
+                    //show that the username is available  
+                    $('#username_availability_result').html(username + ' is Available');  
+                }else{  
+                    //show that the username is NOT available  
+                    $('#username_availability_result').html(username + ' is not Available');  
+                }  
+        });  
+  
+}  
 
 </script>
 
