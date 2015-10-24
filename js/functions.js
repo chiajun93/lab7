@@ -2,7 +2,7 @@ function postFunc(postId, name, comment, author){
 
   var post_name = prompt("Post Name:", name);
   var post_comment = prompt("Comment", comment);
-  //var update_id = "post_" + postId;
+  var update_id = "post_" + postId;
   //var node_index = 4;
 
   var request = $.ajax({
