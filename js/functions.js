@@ -2,7 +2,7 @@ function testing(postId, name, comment, author){
 
   var post_name = prompt("Post Name:", name);
   var post_comment = prompt("Comment", comment);
-  var update_class = "#post_" + postId;
+  var update_class = "post_" + postId;
 
   alert(postId + author + post_name + post_comment);
 
@@ -14,6 +14,12 @@ function testing(postId, name, comment, author){
 		});
 
 		request.done(function(msg) {
+<<<<<<< HEAD
+=======
+      //var x=document.getElementById("update_class");
+      //alert(x.innerHTML);
+      //x.html(msg);
+>>>>>>> origin/master
 			//$("#bod").html(msg);
 		});
 
