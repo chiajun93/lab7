@@ -26,7 +26,7 @@
     <?php
 
     $curr_author = $_SESSION["username"];  //current user
-    
+
     echo("<hr>");
     echo("<button type=\"button\" onclick=\"testing(-1, 'Enter post name', 'Enter post comment','$curr_author')\">Create Post</button><hr>");
 
@@ -35,11 +35,13 @@
         $postName = $post['postName'];
         $comment = $post['postComment'];
         $author = $post['postAuthor'];  //original post author
+        echo("<p id=\"post_$postId\">");
         echo ("$postId<br>");
         echo ("$postName<br>");
         echo ("    Comment: $comment<br>");
         echo ("    Author: $author<br><br>");
         echo("<button type=\"button\" onclick=\"testing($postId, '$postName', '$comment','$curr_author')\">Update Post</button><hr>");
+        echo("</p>");
       }
      ?>
 

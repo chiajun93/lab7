@@ -1,1 +1,1 @@
-{"1":{"postID":1,"postName":"Post 1","postComment":"Post 1","postAuthor":"billybob"},"2":{"postID":2,"postName":"Post 1 update","postComment":"Post 1 update","postAuthor":"billybob"},"3":{"postID":"3","postName":"post 3","postComment":"post 3","postAuthor":"billybob"}}
+{"1":{"postID":1,"postName":"Post 1","postComment":"Post 1 comment","postAuthor":"billybob"}}
