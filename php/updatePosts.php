@@ -16,11 +16,12 @@
   //if post exits in database, update it
   //echo(count($data));
   //echo($id);
-  if(0<=$id && $id<count($data)){
+  if(0<$id && $id<=count($data)){
     //create new data entry
     $data_entry = array('postID' => $id, 'postName' => $name, 'postComment' => $comm, 'postAuthor' => $author);
 
     $data[$id] = $data_entry;
+    echo("here");
   }
   //otherwise make it
   else{

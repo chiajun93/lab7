@@ -26,7 +26,7 @@
     <?php
 
     $curr_author = $_SESSION["username"];  //current user
-
+    
     echo("<hr>");
     echo("<button type=\"button\" onclick=\"testing(-1, 'Enter post name', 'Enter post comment','$curr_author')\">Create Post</button><hr>");
 
