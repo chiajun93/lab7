@@ -12,9 +12,7 @@ Username : <input type="text" id="userName"/>
 <br>
 Password : <input type="password" id="password"/>
 <br>
-<input type="button" value="Login" id='login' onclick="check()"/>
-
-<div id='username_availability_result'></div>
+<input type="button" value="Login" id='login'/>
 </form>
 
 <script>
@@ -22,31 +20,31 @@ $(document).ready(function(){
 	var loginBtn = $("#login");
 
 	loginBtn.click(function(){
-		if($("#userName").val().length == 0){
-			$("#username_availability_result").html("Please enter a valid user name.");
+		if($("#userName").val().length == 0 || $("#password").val().length == 0){
+			alert("Please enter a valid username or password.");
 		}
 		else{
-			$('#username_availability_result').html("");
-			check_availability();  
-		}
+			check_availability();
+		}	
 	});
 });
 
 function check_availability(){  
   
-        //get the username  
+        //get the username and password 
         var username = $('#userName').val();  
-  
+  		var password = $('#password').val(); 
+
         //use ajax to run the check  
-        $.post("checkLogin.php", { username: username },  
-            function(result){  
+        $.post("checkLogin.php", { username: username, password:password},  
+            function(result){   
                 //if the result is 1  
                 if(result == 1){  
                     //show that the username is available  
-                    $('#username_availability_result').html(username + ' is Available');  
+                    window.location.href = "demo.php"; 
                 }else{  
                     //show that the username is NOT available  
-                    $('#username_availability_result').html(username + ' is not Available');  
+                    alert("Incorrect username or password.");  
                 }  
         });  
   
