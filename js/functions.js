@@ -1,10 +1,11 @@
 function postFunc(postId, name, comment, author){
 
+  //ask user for input variables
   var post_name = prompt("Post Name:", name);
   var post_comment = prompt("Comment", comment);
   var update_id = "post_" + postId;
-  //var node_index = 4;
 
+  //AJAX request
   var request = $.ajax({
 			url: "../php/updatePosts.php",
 			type: "POST",
@@ -12,33 +13,17 @@ function postFunc(postId, name, comment, author){
       data: {ajax_post_name: post_name, ajax_post_comm: post_comment, ajax_post_author:author, ajax_post_id:postId},
 		});
 
+    //what to do when the request is done
 		request.done(function(msg) {
       //if we are createing a new post
       if(postId<0){
 
-        //ugh
-        location.reload();
+        //insert before the third child node
+        //(the fourth child node happens to be where we want it)
+        $(msg).insertBefore(document.body.childNodes[4]);
 
-        //var para = document.createElement("p");
-        //var node = document.createTextNode(msg);
-        //para.appendChild(node);
-
-        /*var para = document.getElementById("new_post");
-        var child = document.createElement("p");
-        child.innerHTML = msg;
-        para.insertBefore(para,child);*/
-
-        /*var newPost = document.getElementById("new_post");
-        var newPost = document.getElementById("new_post");
-        var textnode = document.createTextNode(msg);         // Create a text node
-        newPost.appendChild(textnode);*/
-        //newPost.insertBefore(msg);
-        //msg.insertBefore($('#new_post'));
-
-        //elem = document.createElement("div");
-        //elem.id = 'myID';
-        //newPost.innerHTML = msg;
-        //document.body.insertBefore(newPost,document.body.childNodes[node_index--]);
+        //refresh the page if all else fails
+        //location.reload();
       }
       else{
         //update post
@@ -48,6 +33,7 @@ function postFunc(postId, name, comment, author){
 
 		});
 
+    //what to do if the request fails
 		request.fail(function(jqXHR, textStatus) {
 			alert( "Request failed: " + textStatus );
 		});

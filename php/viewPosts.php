@@ -9,9 +9,6 @@
 
   // Set session variables
   $_SESSION["username"] = "billybob";
-  $_SESSION["posts"] = $posts_obj;
-
-
 
 ?>
 
@@ -25,32 +22,34 @@
   <body>
 
     <?php
+    //current user
+    $curr_author = $_SESSION["username"];
 
-    $curr_author = $_SESSION["username"];  //current user
+    //show the create new post button
+    echo("<hr>\n");
+    echo("<button type=\"button\" onclick=\"postFunc(-1, 'Enter post name', 'Enter post comment','$curr_author')\">Create Post</button><hr>\n");
 
-    echo("<hr>");
-    echo("<button type=\"button\" onclick=\"postFunc(-1, 'Enter post name', 'Enter post comment','$curr_author')\">Create Post</button><hr>");
-    echo("<p id=\"new_post\"></p>");
-    echo("<p id=\"new_post2\"></p>");
+    //build each thing from the database in backwards order
+    foreach (array_reverse($posts_obj) as $post_id => $post) {
+      //variables
+      $postId = $post['postID'];
+      $postName = $post['postName'];
+      $comment = $post['postComment'];
+      $author = $post['postAuthor'];  //original post author
 
-      foreach (array_reverse($posts_obj) as $post_id => $post) {
-        $postId = $post['postID'];
-        $postName = $post['postName'];
-        $comment = $post['postComment'];
-        $author = $post['postAuthor'];  //original post author
-        echo("<p id=\"post_$postId\">\n");
-        echo ("$postId<br>\n");
-        echo ("$postName<br>\n");
-        echo ("    Comment: $comment<br>\n");
-        echo ("    Author: $author<br><br>\n");
-        echo("<button type=\"button\" onclick=\"postFunc($postId, '$postName', '$comment','$curr_author')\">Update Post</button><hr>\n");
-        echo("</p>\n");
-      }
-     ?>
+      //echo the correct html
+      echo("<p id=\"post_$postId\">\n");
+      echo ("$postId<br>\n");
+      echo ("$postName<br>\n");
+      echo ("    Comment: $comment<br>\n");
+      echo ("    Author: $author<br><br>\n");
+      echo("<button type=\"button\" onclick=\"postFunc($postId, '$postName', '$comment','$curr_author')\">Update Post</button><hr>\n");
+      echo("</p>\n");
+    }
+   ?>
 
   </body>
 </html>
-
 
 <?php
 // var_dump is your friend! prints out info in an object/array
