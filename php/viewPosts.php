@@ -22,26 +22,29 @@
     <script src="../js/functions.js"></script>
     <title><?php echo($_SESSION["username"]) ?></title>
   </head>
-  <body id="bod">
+  <body>
+
     <?php
 
     $curr_author = $_SESSION["username"];  //current user
 
     echo("<hr>");
-    echo("<button type=\"button\" onclick=\"testing(-1, 'Enter post name', 'Enter post comment','$curr_author')\">Create Post</button><hr>");
+    echo("<button type=\"button\" onclick=\"postFunc(-1, 'Enter post name', 'Enter post comment','$curr_author')\">Create Post</button><hr>");
+    echo("<p id=\"new_post\"></p>");
+    echo("<p id=\"new_post2\"></p>");
 
       foreach (array_reverse($posts_obj) as $post_id => $post) {
         $postId = $post['postID'];
         $postName = $post['postName'];
         $comment = $post['postComment'];
         $author = $post['postAuthor'];  //original post author
-        echo("<p id=\"post_$postId\">");
-        echo ("$postId<br>");
-        echo ("$postName<br>");
-        echo ("    Comment: $comment<br>");
-        echo ("    Author: $author<br><br>");
-        echo("<button type=\"button\" onclick=\"testing($postId, '$postName', '$comment','$curr_author')\">Update Post</button><hr>");
-        echo("</p>");
+        echo("<p id=\"post_$postId\">\n");
+        echo ("$postId<br>\n");
+        echo ("$postName<br>\n");
+        echo ("    Comment: $comment<br>\n");
+        echo ("    Author: $author<br><br>\n");
+        echo("<button type=\"button\" onclick=\"postFunc($postId, '$postName', '$comment','$curr_author')\">Update Post</button><hr>\n");
+        echo("</p>\n");
       }
      ?>
 

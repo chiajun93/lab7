@@ -34,7 +34,7 @@
     $data_entry = array('postID' => count($data)+1, 'postName' => $name, 'postComment' => $comm, 'postAuthor' => $author);
 
     $data[count($data)+1] = $data_entry;
-    $id=count($data)+1;
+    $id=count($data);
   }
 
   //write the modified data
@@ -46,7 +46,7 @@
   echo ("$name<br>");
   echo ("    Comment: $comm<br>");
   echo ("    Author: $author<br><br>");
-  echo("<button type=\"button\" onclick=\"testing($id, '$name', '$comm','$curr_author')\">Update Post</button>");
+  echo("<button type=\"button\" onclick=\"postFunc($id, '$name', '$comm','$curr_author')\">Update Post</button>");
   echo("</p>");
 
 
