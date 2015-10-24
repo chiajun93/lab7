@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-{"1":{"postID":1,"postName":"Post 1","postComment":"Post 1 comment","postAuthor":"billybob"}}
-=======
-{"1":{"postID":1,"postName":"asdasd","postComment":"qweqw","postAuthor":"billybob"},"2":{"postID":"2","postName":"asdqwe d","postComment":"qweqwe","postAuthor":"billybob"},"3":{"postID":3,"postName":"asdas","postComment":"wqeq","postAuthor":"billybob"},"4":{"postID":4,"postName":"qweqwe","postComment":"dasdas","postAuthor":"billybob"},"5":{"postID":5,"postName":"dasdqwe","postComment":"qweqw","postAuthor":"billybob"}}
->>>>>>> origin/master
+{"1":{"postID":"1","postName":"Post 1 new new new","postComment":"I THINK IT WORKS","postAuthor":"billybob"},"2":{"postID":"2","postName":"Post number 2 UPDATED","postComment":"UPDATING","postAuthor":"billybob"}}
