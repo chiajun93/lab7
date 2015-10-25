@@ -7,8 +7,8 @@
 <p>Login Page</p>
 
 
-<form name="myForm" method="POST" >    
-Username : <input type="text" id="userName"/>
+<form id="loginForm" method="POST" action="php/viewPosts.php">    
+Username : <input type="text" id="userName" name = "userName"/>
 <br>
 Password : <input type="password" id="password"/>
 <br>
@@ -41,7 +41,8 @@ function check_availability(){
                 //if the result is 1  
                 if(result == 1){  
                     //show that the username is available  
-                    window.location.href = "php/viewPosts.php"; 
+                    // window.location.href = "php/viewPosts.php"; 
+                    $("#loginForm").submit();
                 }else{  
                     //show that the username is NOT available  
                     alert("Incorrect username or password.");  

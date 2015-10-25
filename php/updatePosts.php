@@ -17,12 +17,13 @@
   $name = $_POST["ajax_post_name"];
   $comm = $_POST["ajax_post_comm"];
   $author = $_POST["ajax_post_author"];
+  $timeStamp = $_POST["ajax_post_time"];
 
 
   //if post exits in database, update it
   if(0<$id && $id<=count($data)){
     //create new data entry
-    $data_entry = array('postID' => $id, 'postName' => $name, 'postComment' => $comm, 'postAuthor' => $author);
+    $data_entry = array('postID' => $id, 'postName' => $name, 'postComment' => $comm, 'postAuthor' => $author, 'timeStamp' => $timeStamp);
 
     //write to the array at its id location
     $data[$id] = $data_entry;
@@ -33,14 +34,15 @@
     echo ("$name<br>");
     echo ("    Comment: $comm<br>");
     echo ("    Author: $author<br><br>");
-    echo("<button type=\"button\" onclick=\"postFunc($id, '$name', '$comm','$curr_author')\">Update Post</button>");
-    echo("</p>");
-
+    echo ("Posted on: $timeStamp<br>");
+    echo ("<button type=\"button\" onclick=\"postFunc($id, '$name', '$comm','$curr_author', '$timeStamp')\">Edit Post</button>\n");
+    echo ("<input type=\"button\" onclick=\"toggleColor($id)\" id = \"likeThis$id\" value = \"Like\"></button>\n");
+    echo ("</p>");
   }
   //otherwise make it
   else{
     //create new data entry
-    $data_entry = array('postID' => count($data)+1, 'postName' => $name, 'postComment' => $comm, 'postAuthor' => $author);
+    $data_entry = array('postID' => count($data)+1, 'postName' => $name, 'postComment' => $comm, 'postAuthor' => $author, 'timeStamp' => $timeStamp);
 
     //write to the array at the end
     $data[count($data)+1] = $data_entry;
@@ -52,8 +54,10 @@
     echo ("$name<br>");
     echo ("    Comment: $comm<br>");
     echo ("    Author: $author<br><br>");
-    echo("<button type=\"button\" onclick=\"postFunc($id, '$name', '$comm','$curr_author')\">Update Post</button>");
-    echo("</p>");
+    echo ("Posted on: $timeStamp<br>");
+    echo ("<button type=\"button\" onclick=\"postFunc($id, '$name', '$comm','$curr_author', '$timeStamp')\">Edit Post</button>\n");
+    echo ("<input type=\"button\" onclick=\"toggleColor($id)\" id = \"likeThis$id\" value = \"Like\"></button>\n");
+    echo ("</p>");
   }
 
   //write the modified data

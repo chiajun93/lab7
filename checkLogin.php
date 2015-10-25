@@ -7,11 +7,9 @@
 	foreach($data as $item){
 		if($username == $item['name'] && $password == $item['password'])
 		{
+			// die(header('Location: php/viewPosts.php'));
 			echo 1;
 		}
 	}
 
-	// var_dump($username);
-	// <br>
-	// var_dump($password);
 ?>
